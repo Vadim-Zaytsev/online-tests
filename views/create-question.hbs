@@ -1,0 +1,37 @@
+<div class="container">
+    <h3 class="center-align">Создать вопрос</h3>
+
+    <form id="questionForm" method="POST">
+        <div class="input-field">
+            <input id="question" type="text" name="question" class="validate" required>
+            <label for="question">Введите вопрос</label>
+        </div>
+
+        <div class="input-field">
+            <input id="correctAnswer" type="text" name="correctAnswer" class="validate" required>
+            <label for="correctAnswer">Правильный ответ</label>
+        </div>
+
+        <div id="additionalAnswers">
+            <div class="input-field">
+                <input id="additionalAnswer1" type="text" name="additionalAnswer[]" class="validate" required>
+                <label for="additionalAnswer1">Дополнительный ответ 1</label>
+            </div>
+        </div>
+
+        <div class="center-align">
+            <button type="button" id="addAnswer" class="btn waves-effect waves-light">
+                <i class="material-icons">add</i> Добавить дополнительный ответ
+            </button>
+        </div>
+
+        <div class="center-align" style="margin-top: 20px;">
+            <button
+                    id="createQuestionBtn"
+                    type="submit"
+                    class="btn waves-effect waves-light"
+                    data-csrf="{{csrf}}">Создать вопрос</button>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+    </form>
+</div>

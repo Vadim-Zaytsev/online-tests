@@ -1,0 +1,51 @@
+<div class="container">
+    <h2 class="center-align">Создать билет</h2>
+
+    <!-- Форма создания билета -->
+    <form id="ticketForm">
+        <!-- Заголовок билета -->
+
+<!--            <span>Билет №{{counter}}</span>-->
+
+        <!-- Подзаголовок: добавить вопросы -->
+        <h5>Добавить вопросы</h5>
+
+        <!-- Контейнер для вопросов -->
+        <div id="questionContainer">
+            <!-- Вопрос №1 -->
+            <div class="input-field">
+                <select name="question1" class="dropdown-trigger" required>
+                    <option value="" disabled selected>Выберите вопрос</option>
+                    <!-- Вопросы будут загружены с сервера -->
+                </select>
+                <label>Вопрос №1</label>
+            </div>
+
+            <!-- Вопрос №2 -->
+            <div class="input-field">
+                <select name="question2" class="dropdown-trigger" required>
+                    <option value="" disabled selected>Выберите вопрос</option>
+                </select>
+                <label>Вопрос №2</label>
+            </div>
+
+            <!-- Вопрос №3 -->
+            <div class="input-field">
+                <select name="question3" class="dropdown-trigger" required>
+                    <option value="" disabled selected>Выберите вопрос</option>
+                </select>
+                <label>Вопрос №3</label>
+            </div>
+        </div>
+
+        <!-- Кнопка добавления дополнительного вопроса -->
+        <button id="addQuestion" class="btn waves-effect waves-light">Добавить вопрос</button>
+
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+        <!-- Кнопка для создания билета -->
+        <button
+                type="submit"
+                class="btn green waves-effect waves-light"
+                data-csrf="{{csrf}}">Создать билет</button>
+    </form>
+</div>

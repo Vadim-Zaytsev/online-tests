@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s6"><a class="active" href="#login">Авторизация</a></li>
+                <li class="tab col s6"><a href="#register">Регистрация</a></li>
+            </ul>
+        </div>
+
+        <!-- Форма регистрации -->
+
+
+
+        <div id="register" class="col s12">
+
+
+
+            <form action="/auth/register" method="post">
+                {{#if registerError}}
+                    <div class="flash-message error">
+                        {{registerError}}
+                    </div>
+                {{/if}}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="name" name="name" type="text" class="validate" required>
+                        <label for="name">Имя</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" name="email" type="email" class="validate" required>
+                        <label for="email">Эл. почта</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password" name="password" type="password" class="validate"
+                               required>
+                        <label for="password">Пароль</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="validate" required>
+                        <label for="confirmPassword">Подтвердить пароль</label>
+                    </div>
+                </div>
+                <div class="row row-align">
+                    <div class="button-container">
+                        <input type="hidden" name="_csrf" value="{{csrf}}">
+                        <button class="btn waves-effect waves-light" type="submit">Зарегистрироваться
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                    <div class="checkbox-container">
+                        <label>
+                            <input type="checkbox" name="loginAfterRegister" />
+                            <span>Войти после регистрации</span>
+                        </label>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Форма входа -->
+        <div id="login" class="col s12">
+
+            {{#if loginError}}
+                <div class="flash-message error">
+                    {{loginError}}
+                </div>
+            {{/if}}
+
+            <form action="/auth/login" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input id="login_email" name="email" type="email" class="validate" required>
+                        <label for="login_email">Эл. почта</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="login_password" name="password" type="password" class="validate" required>
+                        <label for="login_password">Пароль</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <input type="hidden" name="_csrf" value="{{csrf}}">
+                        <button class="btn waves-effect waves-light" type="submit">Авторизоваться
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

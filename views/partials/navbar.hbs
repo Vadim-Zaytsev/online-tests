@@ -1,0 +1,81 @@
+<ul id="dropdown1" class="dropdown-content">
+    {{#if isAuth}}
+
+        {{#if isCreateQuestion}}
+            <li class="active"><a href="/questions/create-question">Создать вопрос</a></li>
+        {{else}}
+            <li><a href="/questions/create-question">Создать вопрос</a></li>
+        {{/if}}
+
+        {{#if isCreateTicket}}
+            <li class="active"><a href="/tickets/create-ticket">Создать билет</a></li>
+        {{else}}
+            <li><a href="/tickets/create-ticket">Создать билет</a></li>
+        {{/if}}
+
+        {{#if isQuestions}}
+            <li class="active"><a href="/questions">Вопросы</a></li>
+        {{else}}
+            <li><a href="/questions">Вопросы</a></li>
+        {{/if}}
+
+        {{#if isTickets}}
+            <li class="active"><a href="/tickets">Билеты</a></li>
+        {{else}}
+            <li><a href="/tickets">Билеты</a></li>
+        {{/if}}
+
+        {{#if isTicketsWithError}}
+            <li class="active"><a href="/tickets-with-error">Билеты с ошибками</a></li>
+        {{else}}
+            <li><a href="/tickets-with-error">Билеты с ошибками</a></li>
+        {{/if}}
+
+        <li class="divider" tabindex="-1"></li>
+
+        {{#if isTicketsWithError}}
+            <li class="active"><a href="/exam">Экзамен</a></li>
+        {{else}}
+            <li><a href="/exam">Экзамен</a></li>
+        {{/if}}
+
+        <li><a href="/auth/logout">Выйти</a></li>
+    {{else}}
+        <li class="active"><a href="/auth#login">Авторизация\Регистрация</a></li>
+    {{/if}}
+</ul>
+
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">
+            Тесты по безопасному обращению с оружием
+        </a>
+        <ul class="right hide-on-med-and-down">
+
+            {{#if isAuthPage}}
+                <li class="active"><a href="/auth#login">Авторизация\Регистрация</a></li>
+            {{else}}
+                <li><a href="/auth#login">Авторизация\Регистрация</a></li>
+            {{/if}}
+
+            {{#if isAuth}}
+
+                {{#if isStatistics}}
+                    <li class="active"><a href="/statistics">Статистика</a></li>
+                {{else}}
+                    <li><a href="/statistics">Статистика</a></li>
+                {{/if}}
+
+            {{/if}}
+
+            <!-- Dropdown Trigger -->
+            <li>
+                <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                    Тестирование
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

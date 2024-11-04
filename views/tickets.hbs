@@ -1,0 +1,77 @@
+<div class="container">
+    <h3 class="center-align">Билеты</h3>
+
+    {{#if tickets.length}}
+        <ul class="collapsible popout">
+            {{#each tickets}}
+                <li class="list-tickets">
+                    <div class="collapsible-header">
+                        <b>Билет №{{this.ticketNumber}}</b>
+                    </div>
+                    <div class="collapsible-body">
+                        <!-- Таймер, который изначально скрыт -->
+                        <div class="center-align timer-container" id="timerContainer{{this.ticketNumber}}"
+                             style="display: none; margin-bottom: 20px;">
+                            <span class="timer" id="timer{{this.ticketNumber}}">20:00</span>
+                        </div>
+
+                        <ul class="collapsible">
+                            {{#each this.questions}}
+                                <li id="question-{{increment @index}}" class="list-questions ticket-{{../this.ticketNumber}}">
+                                    <div class="collapsible-header">Вопрос №{{increment @index}}
+                                                                    : {{this.question}}</div>
+                                    <div class="collapsible-body">
+                                        <form id="questionForm{{this.questionNumber}}" class="question-form">
+                                            {{#each this.answers}}
+                                                <p>
+                                                    <label>
+                                                        <input
+                                                                type="radio"
+                                                                name="answer"
+                                                                data-isCorrect="{{this.isCorrect}}"
+                                                                value="{{this.answer}}"/>
+                                                        <span>{{this.answer}}</span>
+                                                    </label>
+                                                </p>
+                                            {{/each}}
+                                            <div class="center-align">
+                                                <input
+                                                        type="hidden"
+                                                        name="_csrf"
+                                                        value="{{@root.csrf}}">
+                                                <button type="submit"
+                                                        class="btn waves-effect waves-light answer-btn"
+                                                        data-question="{{this.questionNumber}}"
+                                                        data-csrf="{{@root.csrf}}">Ответить
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+                            {{/each}}
+                        </ul>
+
+                        <!-- Кнопки для таймера и отправки -->
+                        <div class="center-align" style="margin-top: 20px;">
+                            <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                            <button
+                                    type="button"
+                                    class="btn waves-effect waves-light start-btn"
+                                    data-ticket="{{this.ticketNumber}}">Начать
+                            </button>
+                            <button
+                                    id="submitTicket"
+                                    type="button"
+                                    class="btn waves-effect waves-light submit-btn"
+                                    data-ticket="{{this.ticketNumber}}"
+                                    data-csrf="{{@root.csrf}}">Отправить на проверку
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>Билетов пока нет.</p>
+    {{/if}}
+</div>

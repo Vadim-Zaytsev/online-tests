@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 class="center-align">Вопросы</h3>
+
+    {{#if questions.length}}
+        <ul class="collapsible popout">
+            {{#each questions}}
+                <li id="question-{{this.questionNumber}}">
+                    <div class="collapsible-header">
+                        <span><b>Вопрос №{{this.questionNumber}}:</b> {{this.question}}</span>
+                    </div>
+                    <div class="collapsible-body">
+                        <form id="questionForm{{this.id}}" class="question-form">
+                            {{#each this.answers}}
+                                <p>
+                                    <label>
+                                        <input
+                                                type="radio"
+                                                name="answer"
+                                                data-isCorrect="{{this.isCorrect}}"
+                                                value="{{this.answer}}"/>
+                                        <span>{{this.answer}}</span>
+                                    </label>
+                                </p>
+                            {{/each}}
+                            <div class="center-align">
+                                <input
+                                        type="hidden"
+                                        name="_csrf"
+                                        value="{{@root.csrf}}">
+                                <button
+                                        type="submit"
+                                        class="btn waves-effect waves-light"
+                                        data-csrf="{{@root.csrf}}">ОТВЕТИТЬ</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>Вопросов пока нет.</p>
+    {{/if}}
+</div>
