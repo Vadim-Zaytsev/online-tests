@@ -7,11 +7,12 @@ import {processTicketCreationForm} from '/js/modules/tickets/createTicket/proces
 import {processQuestionAnswerForm} from '/js/modules/questions/processQuestionAnswerForm.js';
 import {
     toggleElementsStateByQuerySelectorAll,
-    setLifetimeFlashMessages
+    setLifetimeFlashMessages,
 } from '/js/utils.js';
 import {STATE} from '/js/constants.js';
 import {startSolving} from '/js/modules/tickets/solutionTicket/startSolving.js';
 import {submitTicketForVerification} from '/js/modules/tickets/solutionTicket/submitTicketForVerification.js';
+import Handlers from './modules/admin-panel/creating-editing-tests/safe-handling-of-weapons/handlers.js';
 
 document.addEventListener('DOMContentLoaded', async function () {
     window.addEventListener('beforeunload', () => {
@@ -43,6 +44,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         startSolving();
         processQuestionAnswerForm(false);
         submitTicketForVerification();
+    } else if (window.location.pathname === '/admin-panel') {
+
+
     }
 });
 

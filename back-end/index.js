@@ -12,6 +12,7 @@ const authRoutes = require('./routes/auth');
 const statisticsRoutes = require('./routes/statistics');
 const questionsRoutes = require('./routes/questions');
 const ticketsRoutes = require('./routes/tickets');
+const adminPanelRoutes = require('./routes/admin-routes/admin-panel');
 const varMiddleware = require('./middleware/variables');
 
 const app = express();
@@ -27,7 +28,8 @@ const hbs = exphbs.create({
 
 const store = new MongoStore({
     collection: 'sessions',
-    uri: process.env.MONGO_URI
+    uri: process.env.MONGO_URI_ATLAS
+    // uri: process.env.MONGO_URI_LOCAL
 });
 
 app.engine('hbs', hbs.engine);
@@ -55,12 +57,14 @@ app.use('/auth', authRoutes);
 app.use('/statistics', statisticsRoutes);
 app.use('/questions', questionsRoutes);
 app.use('/tickets', ticketsRoutes);
+app.use('/admin-panel', adminPanelRoutes);
 
 const PORT = process.env.PORT || 3000;
 
 async function start() {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(process.env.MONGO_URI_ATLAS);
+        // await mongoose.connect(process.env.MONGO_URI_LOCAL);
         console.log('MongoDB connected');
 
         app.listen(PORT, () => {
@@ -69,6 +73,8 @@ async function start() {
     } catch (error) {
         console.error(error);
     }
+
+
 }
 
 start();

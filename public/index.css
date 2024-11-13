@@ -2,12 +2,17 @@ body {
     padding-top: 60px;
 }
 
+h1 {
+    font-size: 1.8rem;
+}
+
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(63, 63, 63, 0.87);
     z-index: 1000;
 }
 
@@ -52,4 +57,101 @@ nav {
 
 .button-container {
     margin-right: 20px;
+}
+
+
+
+/* Основные стили страницы администратора */
+/* Общие стили */
+
+
+.admin-panel {
+    width: 80%;
+    max-width: 900px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.theme-btn, .load-users-btn, .actions button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    color: #fff;
+    background-color: #3a73d1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: left;
+}
+
+.theme-btn:hover, .load-users-btn:hover, .actions button:hover {
+    background-color: #3360a6;
+}
+
+.actions button {
+    background-color: #f39237;
+    color: #fff;
+}
+
+.actions button:hover {
+    background-color: #d97c2f;
+}
+
+.user-item {
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.user-item:last-child {
+    border-bottom: none;
+}
+
+.subsection {
+    padding: 10px 15px;
+    background: #f9fafb;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+
+/*-----------------*/
+
+.answer-block {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #000; /* Чёрная рамка */
+    border-radius: 4px;
+}
+
+.answer-note {
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.correct-answer {
+    background-color: #a5d6a7; /* Зеленая заливка */
+    color: #2e7d32; /* Темно-зеленый текст */
+}
+
+.additional-answer {
+    background-color: #fff59d; /* Желтая заливка */
+    color: #f57f17; /* Темно-желтый текст */
 }

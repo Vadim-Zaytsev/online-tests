@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const Ticket = require('../models/ticket');
-const auth = require('../middleware/auth');
+const isAuth = require('../middleware/isAuth');
 const Counter = require('../models/counter');
 const router = Router();
 
-router.get('/', auth, async (req, res) => {
+router.get('/', isAuth, async (req, res) => {
     const tickets = await Ticket.find().populate('questions').lean();
 
     res.render('tickets', {
@@ -14,14 +14,14 @@ router.get('/', auth, async (req, res) => {
     });
 });
 
-router.get('/create-ticket', auth, async (req, res) => {
+router.get('/create-ticket', isAuth, async (req, res) => {
     res.render('create-ticket', {
         title: 'Создать билет',
         isCreateTicket: true,
     });
 });
 
-router.post('/create-ticket', auth, async (req, res) => {
+router.post('/create-ticket', isAuth, async (req, res) => {
     try {
         let counter = await Counter.findOne({name: 'ticketCounter'});
 

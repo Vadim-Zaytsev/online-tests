@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const auth = require('../middleware/auth');
+const isAuth = require('../middleware/isAuth');
 const UserStatistics = require('../models/statistics');
 const User = require('../models/user');
 const {ACTIONS} = require('../constants');
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.post('/update', auth, async (req, res) => {
+router.post('/update', isAuth, async (req, res) => {
     try {
         const user = await User.findById(req.session.passport.user);
         const statistics = await UserStatistics.findById(user.statistics);

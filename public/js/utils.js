@@ -45,8 +45,21 @@ function setLifetimeFlashMessages(numberMilliseconds) {
     }
 }
 
+function showContent(contentId) {
+    document
+        .querySelectorAll('.content > div')
+        .forEach((div) => {
+            div.classList.add('hidden');
+        });
+    document
+        .getElementById(contentId)
+        .classList
+        .remove('hidden');
+}
+
 export {
     toggleElementsStateByQuerySelectorAll,
     pointToCorrectAnswer,
     setLifetimeFlashMessages,
+    showContent,
 };

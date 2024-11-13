@@ -16,7 +16,13 @@ const userSchema = new Schema({
     statistics: {
         type: Schema.Types.ObjectId,
         ref: 'UserStatistics',
-    }
-}, { timestamps: true });
+    },
+    roles: [
+        {
+            type: String,
+            ref: 'Role',
+        }
+    ],
+}, {timestamps: true});
 
 module.exports = model('User', userSchema);
