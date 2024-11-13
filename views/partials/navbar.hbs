@@ -1,12 +1,6 @@
 <ul id="dropdown1" class="dropdown-content">
     {{#if isAuth}}
 
-        {{#if isCreateQuestion}}
-            <li class="active"><a href="/questions/create-question">Создать вопрос</a></li>
-        {{else}}
-            <li><a href="/questions/create-question">Создать вопрос</a></li>
-        {{/if}}
-
         {{#if isCreateTicket}}
             <li class="active"><a href="/tickets/create-ticket">Создать билет</a></li>
         {{else}}

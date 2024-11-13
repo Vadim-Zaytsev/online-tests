@@ -21,13 +21,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (window.location.pathname === '/auth') {
         setLifetimeFlashMessages(5000);
-    } else if (window.location.pathname === '/questions/create-question') {
-        const additionalAnswersContainer = JSON.stringify(document
-            .getElementById('additionalAnswers')
-            .innerHTML);
-
-        addNewFieldForAdditionalAnswer();
-        processQuestionCreationForm(additionalAnswersContainer);
     } else if (window.location.pathname === '/tickets/create-ticket') {
         const questionContainer = JSON.stringify(document
             .getElementById('questionContainer')
@@ -45,7 +38,20 @@ document.addEventListener('DOMContentLoaded', async function () {
         processQuestionAnswerForm(false);
         submitTicketForVerification();
     } else if (window.location.pathname === '/admin-panel') {
+        const additionalAnswersContainer = JSON.stringify(document
+            .getElementById('additionalAnswers')
+            .innerHTML);
 
+        addNewFieldForAdditionalAnswer();
+        processQuestionCreationForm(additionalAnswersContainer);
+
+    } else if (window.location.pathname === '/admin-panel/safe-handling-of-weapons/create-question') {
+        const additionalAnswersContainer = JSON.stringify(document
+            .getElementById('additionalAnswers')
+            .innerHTML);
+
+        addNewFieldForAdditionalAnswer();
+        processQuestionCreationForm(additionalAnswersContainer);
 
     }
 });

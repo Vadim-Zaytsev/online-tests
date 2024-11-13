@@ -12,4 +12,9 @@ router.get('/safe-handling-of-weapons/tickets', isAuth, isAdmin, adminPanelContr
 
 router.get('/safe-handling-of-weapons/create-question', isAuth, isAdmin, adminPanelController.renderCreateQuestionPage);
 
+router.post('/safe-handling-of-weapons/create-question', isAuth, isAdmin, adminPanelController.createQuestion)
+
 module.exports = router;
+
+
+

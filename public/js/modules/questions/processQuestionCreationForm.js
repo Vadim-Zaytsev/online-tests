@@ -10,7 +10,7 @@ function processQuestionCreationForm(additionalAnswersContainer) {
         const {question, answers} = getDataOnQuestionsAndAnswers();
 
         try {
-            const response = await fetch('/questions/create-question', {
+            const response = await fetch('/admin-panel/safe-handling-of-weapons/create-question', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

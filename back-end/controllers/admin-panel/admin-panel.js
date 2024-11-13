@@ -1,5 +1,6 @@
 const Question = require('../../models/question');
 const Ticket = require('../../models/ticket');
+const Counter = require('../../models/counter');
 
 class adminPanelController {
     async renderIndexPage(req, res) {
@@ -46,6 +47,33 @@ class adminPanelController {
                 isCreateQuestion: true
             });
         } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async createQuestion(req, res) {
+        try {
+            let counter = await Counter.findOne({name: 'questionCounter'});
+
+            if (!counter) {
+                counter = new Counter({name: 'questionCounter', count: 1});
+            } else {
+                counter.count++;
+            }
+
+            await counter.save();
+
+            const question = new Question({
+                questionNumber: counter.count,
+                question: req.body.question,
+                answers: req.body.answers,
+            });
+
+            await question.save();
+
+            res.status(200).json({ message: 'Вопрос был успешно сохранен.'});
+        } catch (error) {
+            res.status(500).json({ message: 'Ошибка при сохранении вопроса.', error: error });
             console.error(error);
         }
     }
