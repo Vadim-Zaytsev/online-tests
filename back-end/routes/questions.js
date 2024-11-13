@@ -16,13 +16,6 @@ router.get('/', isAuth, async (req, res) => {
     });
 });
 
-router.get('/create-question', isAuth, async (req, res) => {
-    res.render('create-question', {
-        title: 'Создать вопрос',
-        isCreateQuestion: true
-    });
-});
-
 router.get('/list', isAuth, async (req, res) => {
     try {
         const questions = await Question.find().lean();
