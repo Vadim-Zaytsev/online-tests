@@ -12,7 +12,7 @@ const authRoutes = require('./routes/auth');
 const statisticsRoutes = require('./routes/statistics');
 const questionsRoutes = require('./routes/questions');
 const ticketsRoutes = require('./routes/tickets');
-const adminPanelRoutes = require('./routes/admin-routes/admin-panel');
+const adminPanelRoutes = require('./routes/admin-panel');
 const varMiddleware = require('./middleware/variables');
 
 const app = express();
